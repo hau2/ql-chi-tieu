@@ -9,9 +9,6 @@ export default function ExpensePage() {
   const [date, setDate] = useState("");
   const [error, setError] = useState("");
 
-  console.log('categories: ', categories);
-  
-
   useEffect(() => {
     const savedExpenses = JSON.parse(localStorage.getItem("expenses") || "[]");
     const savedCategories = JSON.parse(localStorage.getItem("budgets") || "[]");

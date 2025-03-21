@@ -24,6 +24,11 @@ export default function BudgetPage() {
     setNewCategory("");
   };
 
+  const handleDeleteCategory = (index: number) => {
+    const updatedBudgets = budgets.filter((_, i) => i !== index);
+    setBudgets(updatedBudgets);
+  };
+
   const handleSave = () => {
     localStorage.setItem("budgets", JSON.stringify(budgets));
     alert("💾 Đã lưu ngân sách!");
@@ -35,17 +40,25 @@ export default function BudgetPage() {
         <h1 className="text-2xl font-bold mb-4 text-center text-green-700">📊 Thiết lập ngân sách</h1>
 
         {budgets.map((category, index) => (
-          <div key={index} className="mb-4">
-            <label className="block text-gray-700 font-medium mb-1">
-              {category.name} (VNĐ):
-            </label>
-            <input
-              type="number"
-              value={category.budget}
-              onChange={(e) => handleChange(index, e.target.value)}
-              placeholder="Nhập số tiền"
-              className="p-3 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-green-400"
-            />
+          <div key={index} className="mb-4 flex gap-2 items-center">
+            <div className="flex-1">
+              <label className="block text-gray-700 font-medium mb-1">
+                {category.name} (VNĐ):
+              </label>
+              <input
+                type="number"
+                value={category.budget}
+                onChange={(e) => handleChange(index, e.target.value)}
+                placeholder="Nhập số tiền"
+                className="p-3 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+            </div>
+            <button
+              onClick={() => handleDeleteCategory(index)}
+              className="px-2 py-1 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition"
+            >
+              ❌
+            </button>
           </div>
         ))}
 

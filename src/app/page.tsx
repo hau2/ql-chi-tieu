@@ -24,6 +24,11 @@ export default function HomePage() {
             </Link>
           </li>
           <li>
+            <Link className="block p-3 bg-blue-100 rounded-lg hover:bg-blue-200 transition" href="/transactions">
+              📜 Xem lịch sử chi tiêu
+            </Link>
+          </li>
+          <li>
             <Link className="block p-3 bg-purple-100 rounded-lg hover:bg-purple-200 transition" href="/report">
               📈 Xem báo cáo
             </Link>
